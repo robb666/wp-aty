@@ -1,2 +1,6 @@
 L_H_ks.py
 cron.log
+build
+dist
+__pycache__
+*.spec
