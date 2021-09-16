@@ -5,7 +5,7 @@ import sys
 import os
 import time
 import re
-from L_H_ks import link, numpad
+from L_H_ks import bnk, link, numpad
 
 ahk = AHK()
 
@@ -14,7 +14,7 @@ def open_browser():
     ahk.run_script('Run, firefox.exe -new-window ' + link)
     time.sleep(9)
     for window in ahk.windows():
-        if 'Santander' in window.title.decode('windows-1252'):
+        if bnk in window.title.decode('windows-1252'):
             win = window
             win.maximize()
             window.always_on_top = True
