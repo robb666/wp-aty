@@ -36,18 +36,21 @@ def log_into_account():
     time.sleep(8)
 
 
-def read_amount():
-    file = r'M:\Wpłaty\inkaso.txt'
-    if os.path.exists(file):
-        with open(file, 'r') as f:
+def read_amount(payment_file):
+    inkaso = r'M:\Wpłaty\inkaso.txt'
+    if os.path.exists(inkaso):
+        with open(inkaso, 'r') as f:
             amount = re.search(': (\d*\s?\d+,\d+)', f.read()).group(1)
-        os.remove(file)
+        os.remove(inkaso)
         return amount.replace(' ', '')
     else:
+        with open(payment_file, 'a') as f:
+            f.write(
+                f"W dniu {time.strftime('%d.%m.%Y o godzinie %H:%M')} brak należności dla PZU.")
         sys.exit()
 
 
-def transfer(win, amount):
+def transfer(win, payment_file, amount):
     ahk.mouse_move(841, 219, speed=10)
     ahk.click()
     time.sleep(5)
@@ -74,12 +77,12 @@ def transfer(win, amount):
     ahk.click()  # run
     time.sleep(5)
     win.close()
-    file = r'M:\Wpłaty\dokonane wpłaty.txt'
-    with open(file, 'a') as f:
+    with open(payment_file, 'a') as f:
         f.write(f"Wpłata do PZU w wysokości {amount} zł wykonana dnia {time.strftime('%d.%m.%Y o godzinie %H:%M')}\n")
 
 
-amount = read_amount()
+payment_file = r'M:\Wpłaty\dokonane wpłaty.txt'
+amount = read_amount(payment_file)
 win = open_browser()
 log_into_account()
-transfer(win, amount)
+transfer(win, payment_file, amount)
