@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/robb/Desktop/PROJEKTY/wpłaty/wplaty.py", line 18, in <module>
+    driver = driver()
+  File "/home/robb/Desktop/PROJEKTY/wpłaty/wplaty.py", line 15, in driver
+    return webdriver.Chrome(options=options)  # koniecznie --headless przy cronie
+  File "/home/robb/Desktop/PROJEKTY/nn/.env/lib/python3.9/site-packages/selenium/webdriver/chrome/webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "/home/robb/Desktop/PROJEKTY/nn/.env/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "/home/robb/Desktop/PROJEKTY/nn/.env/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "/home/robb/Desktop/PROJEKTY/nn/.env/lib/python3.9/site-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/home/robb/Desktop/PROJEKTY/nn/.env/lib/python3.9/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: Chrome failed to start: exited abnormally
+  (unknown error: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location /usr/bin/google-chrome is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+  (Driver info: chromedriver=2.41.578700 (2f1ed5f9343c13f73144538f15c00b370eda6706),platform=Linux 5.11.0-34-generic x86_64)
+

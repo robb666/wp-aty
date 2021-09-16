@@ -11,7 +11,7 @@ import time
 def driver():
     options = Options()
     options.add_argument('--window-size=1920,1080')
-    options.add_argument('--headless')
+    # options.add_argument('--headless')
     return webdriver.Chrome(options=options)  # koniecznie --headless przy cronie
 
 
@@ -45,8 +45,12 @@ WebDriverWait(driver, 9).until(EC.presence_of_element_located((By.XPATH,
                                                               "//*[contains(text(), 'Rozlicz')]"))).click()
 kwota = WebDriverWait(driver, 9).until(EC.presence_of_element_located((By.ID,
                                                    "ProducerStatementReportOnlinePzu:0:PaymentAmount-inputEl"))).text
+driver.quit()
 
 path = '/run/user/1000/gvfs/smb-share:server=192.168.1.12,share=e/Wpłaty/inkaso.txt'
 with open(path, 'w') as f:
-    f.write(f'PZU: {kwota} PLN')
+    if kwota != '0':
+        f.write(f'PZU: {kwota} PLN')
+    else:
+        pass
 
