@@ -24,6 +24,7 @@ def open_browser():
 
 
 def log_into_account():
+    # Tyko "Narzędzie Wycinanie" z Win10, screenshot z przeglądarki nie zadziała!
     path = r'C:\Users\ROBERT\Desktop\IT\PYTHON\PYTHON 37 PROJEKTY\wpłaty\images\\'
     if pyautogui.locateOnScreen(path + r'zalog_b.png'):
         pyautogui.click(path + r'zalog_b.png')
