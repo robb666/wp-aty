@@ -53,7 +53,7 @@ def read_amount(payment_file):
     else:
         with open(payment_file, 'a') as f:
             f.write(
-                f"W dniu {time.strftime('%d.%m.%Y o godzinie %H:%M')} brak należności dla PZU.")
+                f"W dniu {time.strftime('%d.%m.%Y o godzinie %H:%M')} brak należności dla PZU.\n")
         sys.exit()
 
 
