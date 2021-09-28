@@ -24,14 +24,15 @@ def open_browser():
 
 
 def log_into_account():
-    if pyautogui.locateOnScreen(r'images\zalog_b.png'):
-        pyautogui.click(r'images\zalog_b.png')
+    path = r'C:\Users\ROBERT\Desktop\IT\PYTHON\PYTHON 37 PROJEKTY\wpłaty\images\\'
+    if pyautogui.locateOnScreen(path + r'zalog_b.png'):
+        pyautogui.click(path + r'zalog_b.png')
     else:
-        pyautogui.locateOnScreen(r'images\zalog_sz.png')
-        pyautogui.click(r'images\zalog_sz.png')
+        pyautogui.locateOnScreen(path + r'zalog_sz.png')
+        pyautogui.click(path + r'zalog_sz.png')
 
-    pyautogui.locateOnScreen(r'images\sant_int.png')
-    pyautogui.click(r'images\sant_int.png')
+    pyautogui.locateOnScreen(path + r'sant_int.png')
+    pyautogui.click(path + r'sant_int.png')
 
     time.sleep(5)
     ahk.run_script(f'Send, {numpad}')

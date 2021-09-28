@@ -1,1 +1,1 @@
-pyinstaller -F --noconsole --add-data "C:\Users\Robert\AppData\Local\Programs\Python\Python39\Lib\site-packages\ahk";"ahk" wplaty2.py
+pyinstaller -F --noconsole --add-data "C:\Users\Robert\AppData\Local\Programs\Python\Python39\Lib\site-packages\ahk";"ahk" wplaty2.py --hidden-import pyautogui
