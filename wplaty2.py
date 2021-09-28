@@ -1,11 +1,13 @@
 
 from __future__ import print_function
-from ahk import AHK
 import sys
 import os
+from ahk import AHK
+import pyautogui
 import time
 import re
 from L_H_ks import bnk, link, numpad
+
 
 ahk = AHK()
 
@@ -22,11 +24,15 @@ def open_browser():
 
 
 def log_into_account():
-    ahk.mouse_move(1725, 190, speed=10)
-    # ahk.run_script('ImageSearch, 1172, 94, 1625, 246, Zaloguj.png')
-    ahk.click()
-    ahk.mouse_move(1725, 259, speed=10)
-    ahk.click()
+    if pyautogui.locateOnScreen(r'images\zalog_b.png'):
+        pyautogui.click(r'images\zalog_b.png')
+    else:
+        pyautogui.locateOnScreen(r'images\zalog_sz.png')
+        pyautogui.click(r'images\zalog_sz.png')
+
+    pyautogui.locateOnScreen(r'images\sant_int.png')
+    pyautogui.click(r'images\sant_int.png')
+
     time.sleep(5)
     ahk.run_script(f'Send, {numpad}')
     ahk.mouse_move(1297, 428, speed=10)
