@@ -12,7 +12,7 @@ def driver():
     options = Options()
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--headless')
-    return webdriver.Chrome(options=options)  # koniecznie --headless przy cronie
+    return webdriver.Chrome()#options=options)  # koniecznie --headless przy cronie
 
 
 driver = driver()
@@ -26,11 +26,22 @@ personal_data = {}
 
 location = "/run/user/1000/gvfs/smb-share:server=192.168.1.12,share=e/Agent baza/Login_Hasło.xlsx"
 
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+
 ws = pd.read_excel(location, index_col=None, na_values=['NA'], usecols="A:G")
 df = pd.DataFrame(ws).head(50)
 
-log = df.iloc[43, 5]
-h = df.iloc[43, 6]
+# new_header = df.iloc[1]
+# df = df[3:]
+# df.columns = new_header
+# df = df.rename(index=lambda x: x + 2)
+
+row_num = 30
+
+log = df.iloc[row_num - 2, 5]
+h = df.iloc[row_num - 2, 6]
 
 
 driver.get(url)
@@ -51,7 +62,7 @@ path = '/run/user/1000/gvfs/smb-share:server=192.168.1.12,share=e/Wpłaty/inkaso
 
 if kwota != '0':
     with open(path, 'w') as f:
-        f.write(f'PZU: {kwota} PLN')
+        f.write(f'PZU: {kwota}')
 else:
     pass
 
