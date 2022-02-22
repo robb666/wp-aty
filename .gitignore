@@ -7,3 +7,6 @@ __pycache__
 .idea/
 images
 wplaty3.py
+.env/
+AHK-wplaty2-old.py
+wplaty2.py
