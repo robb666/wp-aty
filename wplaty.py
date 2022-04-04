@@ -12,7 +12,7 @@ def driver():
     options = Options()
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--headless')
-    return webdriver.Chrome(options=options)  # koniecznie --headless przy cron
+    return webdriver.Chrome(options=options)  # koniecznie --headless przy cron (ubuntu)
 
 
 driver = driver()
