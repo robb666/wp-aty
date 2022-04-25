@@ -50,7 +50,7 @@ def sanlog(driver, url):
     driver.find_element_by_xpath('//span[contains(text(), "Zaloguj")]').click()
     time.sleep(1)
     WebDriverWait(driver, 9).until(EC.presence_of_element_located((
-        By.XPATH, '//a[contains(text(), "Santander internet")]'))).click()
+        By.XPATH, '//a[(@title="Santander internet" and @class="button primary small")]'))).click()
     WebDriverWait(driver, 15).until(EC.url_changes(url))
     try:
         driver.find_element_by_xpath('//div[contains(text(), "Akceptuję")]').click()
