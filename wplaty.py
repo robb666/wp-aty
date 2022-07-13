@@ -24,7 +24,7 @@ tasks = ['Rozlicz']
 
 personal_data = {}
 
-location = "/run/user/1000/gvfs/smb-share:server=192.168.1.12,share=e/Agent baza/Login_Hasło.xlsx"
+location = "/run/user/1000/gvfs/smb-share:server=192.168.1.12,share=e/Agent baza/Login_Hasło.xlsm"
 
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
