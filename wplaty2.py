@@ -6,6 +6,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver import ActionChains
+# from selenium.webdriver.common import action_chains
+# from selenium.webdriver.common.keys import Keys
 import time
 import re
 from L_H_ks import link, san_l, san_h
@@ -86,11 +89,17 @@ def sanlog(driver, url):
 
 def santrans(driver, amount):
     WebDriverWait(driver, 9).until(EC.presence_of_element_located((By.ID, 'menu_transfers'))).click()
-    WebDriverWait(driver, 9).until(EC.presence_of_element_located((
-                                            By.XPATH, '//input[starts-with(@id, "name")][2]'))).send_keys('PZU')
-    time.sleep(1)
-    WebDriverWait(driver, 9).until(EC.presence_of_element_located((
-                                            By.XPATH, '//*[@id="body"]/div[7]/ul/li[3]'))).click()
+    receiver = WebDriverWait(driver, 9).until(EC.presence_of_element_located((
+                                            By.XPATH, '//input[starts-with(@id, "name")][2]')))
+    receiver.send_keys('PZU')
+    receiver.click()
+
+    choose = WebDriverWait(driver, 9).until(EC.presence_of_element_located((
+                                            By.XPATH, "//li[contains(@class, 'trust')]")))
+    choose.click()
+
+    time.sleep(.8)
+
     WebDriverWait(driver, 9).until(EC.presence_of_element_located((
                                             By.XPATH, '//input[starts-with(@id, "creditedAmount")]'))).send_keys(amount)
     WebDriverWait(driver, 9).until(EC.presence_of_element_located((
